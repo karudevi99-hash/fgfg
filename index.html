@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App Download</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Webview iframe */
+iframe {
+    width: 100%;
+    height: 100vh;
+    border: none;
+}
+
+/* Download Button */
+.download-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    background: #00c853;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    z-index: 1000;
+}
+</style>
+
+</head>
+<body>
+
+<!-- WebView -->
+<iframe src="https://link.dpervf.com/"></iframe>
+
+<!-- Button -->
+<div class="download-btn" onclick="downloadApp()">
+    Download App
+</div>
+
+<script>
+const apkLink = "goplay.apk";
+
+// 👉 sirf tap/click detect karega (scroll ko block nahi karega)
+let isClick = false;
+
+document.addEventListener("touchstart", () => isClick = true);
+document.addEventListener("touchmove", () => isClick = false);
+document.addEventListener("touchend", () => {
+    if (isClick) downloadApp();
+});
+
+// Desktop click
+document.addEventListener("click", () => {
+    downloadApp();
+});
+
+function downloadApp() {
+    window.location.href = apkLink;
+}
+</script>
+
+</body>
+</html>
